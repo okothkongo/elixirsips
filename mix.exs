@@ -17,8 +17,10 @@ defmodule ElixirSip.MixProject do
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test
+      ],
+      dialyzer: [
+        plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
       ]
-
     ]
   end
 
@@ -58,7 +60,8 @@ defmodule ElixirSip.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:credo, "~> 1.6"},
-      {:excoveralls, "~> 0.14.6"}
+      {:excoveralls, "~> 0.14.6"},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
     ]
   end
 

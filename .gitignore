@@ -32,3 +32,6 @@ elixir_sip-*.tar
 npm-debug.log
 /assets/node_modules/
 .vscode/
+
+/priv/plts/*.plt
+/priv/plts/*.plt.hash
