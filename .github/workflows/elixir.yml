@@ -47,5 +47,8 @@ jobs:
     - name: Setup db
       run: mix ecto.create
 
+    - name: Run test coverage
+      run: mix coveralls
+      
     - name: Run tests
       run: mix test
