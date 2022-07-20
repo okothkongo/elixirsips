@@ -10,7 +10,17 @@ defmodule ElixirSip.MixProject do
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ],
+      dialyzer: [
+        plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+      ]
     ]
   end
 
@@ -48,7 +58,11 @@ defmodule ElixirSip.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:credo, "~> 1.6"},
+      {:excoveralls, "~> 0.14.6"},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
+      {:boundary, "~> 0.9", runtime: false}
     ]
   end
 
@@ -64,7 +78,13 @@ defmodule ElixirSip.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["esbuild default --minify", "phx.digest"],
+      lint: [
+        "format",
+        "format --check-formatted",
+        "compile --warnings-as-errors --force",
+        "credo --strict"
+      ]
     ]
   end
 end

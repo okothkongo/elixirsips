@@ -4,7 +4,7 @@ defmodule ElixirSip.Application do
   @moduledoc false
 
   use Application
-
+  use Boundary, top_level?: true, deps: [ElixirSip, ElixirSipWeb]
   @impl true
   def start(_type, _args) do
     children = [
