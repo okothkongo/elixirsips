@@ -61,7 +61,8 @@ defmodule ElixirSip.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:credo, "~> 1.6"},
       {:excoveralls, "~> 0.14.6"},
-      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
+      {:boundary, "~> 0.9", runtime: false}
     ]
   end
 
