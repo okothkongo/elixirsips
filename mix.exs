@@ -62,7 +62,11 @@ defmodule ElixirSip.MixProject do
       {:credo, "~> 1.6"},
       {:excoveralls, "~> 0.14.6"},
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
-      {:boundary, "~> 0.9", runtime: false}
+      {:boundary, "~> 0.9", runtime: false},
+      {:nimble_publisher, "~> 0.1.0"},
+      {:makeup_elixir, ">= 0.0.0"},
+      {:makeup_erlang, ">= 0.0.0"},
+      {:earmark, "~> 1.3"}
     ]
   end
 
