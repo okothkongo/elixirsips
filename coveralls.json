@@ -6,7 +6,9 @@
     "test/support/data_case.ex",
     "lib/elixir_sip_web/views/error_helpers.ex",   
     "lib/elixir_sip.ex" ,
-    "lib/elixir_sip_web/live/live_helpers.ex" 
+    "lib/elixir_sip_web/live/live_helpers.ex",
+    "lib/elixir_sip/blog/post.ex",
+    "lib/elixir_sip/blog.ex"
   ],
   "coverage_options": {
     "minimum_coverage": 76.5
