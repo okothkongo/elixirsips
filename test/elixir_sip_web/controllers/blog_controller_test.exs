@@ -7,7 +7,6 @@ defmodule ElixirSipWeb.BlogControllerTest do
   end
 
   test "GET /blog/:id", %{conn: conn} do
-
     conn = get(conn, "/blog/place-holder-blog")
     assert html_response(conn, 200) =~ "Place holder"
   end

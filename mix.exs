@@ -66,7 +66,8 @@ defmodule ElixirSip.MixProject do
       {:nimble_publisher, "~> 0.1.0"},
       {:makeup_elixir, ">= 0.0.0"},
       {:makeup_erlang, ">= 0.0.0"},
-      {:earmark, "~> 1.3"}
+      {:earmark, "~> 1.3"},
+      {:tailwind, "~> 0.1.6", runtime: Mix.env() == :dev}
     ]
   end
 
@@ -82,7 +83,7 @@ defmodule ElixirSip.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"],
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"],
       lint: [
         "format",
         "format --check-formatted",
