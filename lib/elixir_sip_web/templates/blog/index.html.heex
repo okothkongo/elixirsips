@@ -1,19 +1,62 @@
-<h1>Listing all posts</h1>
+
+<div class="divide-y divide-gray-200 dark:divide-gray-700">
+  <div class="space-y-2 pt-6 pb-8 md:space-y-5">
+    <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">Latest</h1>
+    <div class="relative max-w-lg">
+      <input type="text" aria-label="Search articles" placeholder="Search articles" class="block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100">
+      <svg class="absolute right-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+  
+      </svg>
+  
+    </div>
+  
+  </div>
+ 
 
 <%= for post <- @posts do %>
-  <div id="{ post.id }" style="margin-bottom: 3rem;">
-    <h2>
-      <%= link post.title, to: Routes.blog_path(@conn, :show, post)%>
-    </h2>
+  <div id="{ post.id }" style="margin-bottom: 3rem;" >
+    <ul>
+      <li class="py-4">
+        <article class="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
+          <dl>
+            <dt class="sr-only">Published On</dt>
+            <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+              <time>
+                <%= post.date %>
+              </time>
+            </dd>
+            <dt class="sr-only"> Author </dt>
+            <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+              <div class="flex flex-wrap">
+                <%= link "By #{post.author}", to: Routes.blog_path(@conn, :show, post), class: "mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" %>
+              </div>
+            </dd>
+          </dl>
+          <div class="space-y-3 xl:col-span-3">
+            <div>
+              <h3 class="text-2xl font-bold leading-8 tracking-tight">
+                <%= link post.title, to: Routes.blog_path(@conn, :show, post), class: "text-gray-900 dark:text-gray-100" %>
+              </h3>
+              <div class="flex flex-wrap">
+                <%= for tag <- post.tags do %>
+                <%= link tag, to: "#", class: "mr-3 text-sm font-medium uppercase text-teal-500 hover:text-primary-600 dark:hover:text-primary-400" %>
+                <% end %>
 
-    <p>
-      <time><%= post.date %></time> by <%= post.author %>
-    </p>
-
-    <p>
-      Tagged as <%= Enum.join(post.tags, ", ") %>
-    </p>
-
-    <%= raw post.description %>
+              </div>
+            </div>
+           
+            
+            <div class="prose max-w-none text-gray-500 dark:text-gray-400">
+              <%= raw post.description %>
+            </div>
+          </div>
+          
+        </article>
+      </li>
+    </ul>
+   
+  
   </div>
 <% end %>
+</div>
