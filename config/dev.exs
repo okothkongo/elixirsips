@@ -26,7 +26,8 @@ config :elixir_sip, ElixirSipWeb.Endpoint,
   secret_key_base: "aGh+Lau95DHGUmq8JfZvb/2hwcTfFzMDT94HcNLXZNOrIzui0IJbLxK019akfaaF",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support

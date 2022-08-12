@@ -9,22 +9,43 @@
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
-  <body>
-    <header>
-      <section class="container">
-        <nav>
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
-            <% end %>
-          </ul>
-        </nav>
-        <a href="https://phoenixframework.org/" class="phx-logo">
-          <img src={Routes.static_path(@conn, "/images/phoenix.png")} alt="Phoenix Framework Logo"/>
-        </a>
-      </section>
-    </header>
-    <%= @inner_content %>
+  <body class="bg-white text-black antialiased dark:bg-gray-900 dark:text-white" data-new-gr-c-s-check-loaded="14.1073.0" data-gr-ext-installed>
+    <div>
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+        <div class="flex h-screen flex-col justify-between">
+          <header class="flex items-center justify-between py-10">
+            <div>
+              <a aria-label="ElixirsipsBlog" href="/blog">
+                <div class="flex items-center justify-between">
+                  <div class="mr-3"></div>
+                  <div class="hidden h-6 text-2xl font-semibold sm:block">
+                    ElixirsipsBlog
+                  </div>
+      
+                </div>
+              </a>
+            </div>
+            <div class="flex items-center text-base leading-5">
+              <div class="hidden sm:block">
+                <a href="/blog" class="p-1 font-medium text-gray-900 dark:text-gray-100 sm:p-4">
+                  Blog
+                </a>
+                <a href="#" class="p-1 font-medium text-gray-900 dark:text-gray-100 sm:p-4">
+                  Tags
+                </a>
+                <a href="/blog" class="p-1 font-medium text-gray-900 dark:text-gray-100 sm:p-4">
+                  About Us
+                </a>
+              </div>
+            </div>
+          </header>
+          <%= @inner_content %>
+
+        </div>
+
+      </div>
+    </div>
+   
+    
   </body>
 </html>
